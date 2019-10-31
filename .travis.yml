@@ -33,66 +33,71 @@ matrix:
   include:
     # Linux
     - os:        linux
-      env:       MB_PYTHON_VERSION=2.7
-    - os:        linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - UNICODE_WIDTH=16
-    - os:        linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os:        linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-        - UNICODE_WIDTH=16
-    - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.5
+    
     - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.5
         - PLAT=i686
+
     - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.6
+    
     - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.6
         - PLAT=i686
+    
     - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.7
+    
     - os:        linux
+      sudo: required
       env:
         - MB_PYTHON_VERSION=3.7
         - PLAT=i686
+    
     # OSX
     - os:        osx
-      language:  generic
-      env:
-        - MB_PYTHON_VERSION=2.7
-    - os:        osx
-      language:  generic
-      env:
-        - MB_PYTHON_VERSION=3.5
-    - os:        osx
+      sudo: required
       language:  generic
       env:
         - MB_PYTHON_VERSION=3.6
+  
     - os:        osx
+      sudo: required
       language:  generic
       env:
         - MB_PYTHON_VERSION=3.7
 
 before_install:
+    - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+    - chmod +x miniconda.sh
+    - ./miniconda.sh -b
+    - export PATH=/home/travis/miniconda/bin:$PATH
+    - conda update --yes conda
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
 
 install:
     # Maybe get and clean and patch source
+    - conda create --yes -n test python=$MB_PYTHON_VERSION
+    - source activate test
+    - conda install cmake
+    - conda install --yes gcc g++ python3-dev python3-distutils
+    - conda install --yes -c conda-forge swig=4.0.1
+    - BACK=$(pwd)
+    - cd $REPO_DIR && mkdir build && cd build && cmake .. && make
+    - cd ${BACK}
     - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
 
