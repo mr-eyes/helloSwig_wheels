@@ -5,25 +5,33 @@ function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
 
+
+    ls
+    ls build
+    pwd
+    yum install tree -y
+    tree
+
+
     # Install anaconda
-    yum install curl -y
-    yum install bzip2 -y
-    yum install cmake -y
-    yum install make -y
+    # yum install curl -y
+    # yum install bzip2 -y
+    # yum install cmake -y
+    # yum install make -y
 
-    curl –O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    sh Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
-    export PATH=" $HOME/miniconda3/bin:$PATH"
-    conda -V
+    # curl –O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    # sh Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
+    # export PATH=" $HOME/miniconda3/bin:$PATH"
+    # conda -V
 
 
-    yum install swig -y
-    rm -rf build
-    mkdir build
-    cd build
-    cmake ..
-    make
-    cd ..
+    # yum install swig -y
+    # rm -rf build
+    # mkdir build
+    # cd build
+    # cmake ..
+    # make
+    # cd ..
 }
 
 function pip_opts {
