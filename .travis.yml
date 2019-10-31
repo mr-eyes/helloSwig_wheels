@@ -101,6 +101,7 @@ install:
     - conda install --yes -c conda-forge swig=4.0.1
     - BACK=$(pwd)
     - pwd
+    - cd $REPO_DIR
     - mkdir build && cd build && cmake ..
     - make
     - cd ${BACK}
