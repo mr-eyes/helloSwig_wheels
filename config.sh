@@ -16,10 +16,11 @@ function pre_build {
 function pip_opts {
     # Extra options for pip
     # echo "--only-binary matplotlib --find-links ${MANYLINUX_URL}"
+    echo "Hello"
 }
 
 function run_tests {
-
+    echo "tests"
     # # Runs tests on installed distribution from an empty directory
     # ASTROPY_INSTALL_DIR=$(dirname $(python -c 'import astropy; print(astropy.__file__)'))
 
