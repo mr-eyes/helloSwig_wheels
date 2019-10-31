@@ -1,5 +1,6 @@
 env:
   global:
+        - CI_NODE_TOTAL=1
         - REPO_DIR=hello_swig
         # Commit from your-project that you want to build
         # - BUILD_COMMIT=v0.3.0
@@ -95,6 +96,7 @@ install:
     - source activate test
     - conda install --yes cmake make
     - conda install -c anaconda gcc -y
+    - conda install -c anaconda libstdcxx-ng -y
     - conda install --yes -c conda-forge swig=4.0.1
     - BACK=$(pwd)
     - pwd
