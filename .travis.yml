@@ -91,6 +91,8 @@ matrix:
     #     - MB_PYTHON_VERSION=3.7
 
 before_install:
+    - g++ --version
+    - which g++ 
     - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh;
     - chmod +x miniconda3.sh
     - ./miniconda3.sh -b
@@ -112,11 +114,12 @@ install:
     - BACK=$(pwd)
     - pwd
     - g++ --version
+    - which g++
     - cd $REPO_DIR
     - mkdir build && cd build && cmake ..
     - make
     - cd ${BACK}
-    - clean_code $REPO_DIR $BUILD_COMMIT
+    # - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
 
 script:
