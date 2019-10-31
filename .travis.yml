@@ -93,8 +93,8 @@ install:
     - export PATH=/home/travis/miniconda3/bin:$PATH
     - conda create --yes -n test python=$MB_PYTHON_VERSION
     - source activate test
-    - conda install --yes cmake
-    - conda install --yes gcc g++ python3-dev python3-distutils
+    - conda install --yes cmake make
+    - conda install -c anaconda gcc -y
     - conda install --yes -c conda-forge swig=4.0.1
     - BACK=$(pwd)
     - cd $REPO_DIR && mkdir build && cd build && cmake .. && make
