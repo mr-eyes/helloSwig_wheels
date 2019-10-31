@@ -97,6 +97,10 @@ install:
     - conda install -c anaconda gcc -y
     - conda install --yes -c conda-forge swig=4.0.1
     - BACK=$(pwd)
+    - pwd
+    - echo ${BACK}
+    - ls
+    - echo ""
     - cd $REPO_DIR && mkdir build && cd build && cmake .. && make
     - cd ${BACK}
     - clean_code $REPO_DIR $BUILD_COMMIT
