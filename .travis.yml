@@ -36,14 +36,14 @@ matrix:
     - os:        linux
       sudo: required
       compiler: 
-        - clang
+        - gcc
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - gcc-6
-            - g++-6
+            - gcc-7
+            - g++-7
             - cmake
             - make
       env:
