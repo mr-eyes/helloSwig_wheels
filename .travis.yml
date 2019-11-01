@@ -138,4 +138,4 @@ script:
 
 after_success:
     # Upload to bintray
-    - for WHEEL in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading ${WHEEL}";  curl -T $WHEEL -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/master/
+    - for WHEEL in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading ${WHEEL}";  curl -T $WHEEL -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/; done
