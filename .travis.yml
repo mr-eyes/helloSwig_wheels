@@ -51,35 +51,35 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.6
     
-    # - os:        linux
-    #   sudo: required
-    #   env:
-    #     - MB_PYTHON_VERSION=3.5
-    #     - PLAT=i686
+    - os:        linux
+      sudo: required
+      env:
+        - MB_PYTHON_VERSION=3.5
+        - PLAT=i686
 
-    # - os:        linux
-    #   sudo: required
-    #   env:
-    #     - MB_PYTHON_VERSION=3.6
+    - os:        linux
+      sudo: required
+      env:
+        - MB_PYTHON_VERSION=3.6
     
-    # - os:        linux
-    #   sudo: required
-    #   env:
-    #     - MB_PYTHON_VERSION=3.6
-    #     - PLAT=i686
+    - os:        linux
+      sudo: required
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - PLAT=i686
     
-    # - os:        linux
-    #   sudo: required
-    #   env:
-    #     - MB_PYTHON_VERSION=3.7
+    - os:        linux
+      sudo: required
+      env:
+        - MB_PYTHON_VERSION=3.7
     
-    # - os:        linux
-    #   sudo: required
-    #   env:
-    #     - MB_PYTHON_VERSION=3.7
-    #     - PLAT=i686
+    - os:        linux
+      sudo: required
+      env:
+        - MB_PYTHON_VERSION=3.7
+        - PLAT=i686
     
-    # # OSX
+    # OSX
     # - os:        osx
     #   sudo: required
     #   language:  generic
