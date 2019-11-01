@@ -68,10 +68,6 @@ function pre_build {
     cd ..
 }
 
-function pip_opts {
-    # Extra options for pip
-    # echo "--only-binary matplotlib --find-links ${MANYLINUX_URL}"
-}
 
 function run_tests {
     # echo "tests"
@@ -85,6 +81,6 @@ function run_tests {
     # (cd $ASTROPY_INSTALL_DIR && patch -p0 < $patch_file)
 
     # # Runs tests on installed distribution from an empty directory
-    # python --version
+    python --version
     # python -c "import sys; import swigHello; sys.exit(astropy.test(remote_data='none'))"
 }
