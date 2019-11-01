@@ -3,64 +3,65 @@
 
 function pre_build {
 
-    echo "---------------------------------"
+    echo "--------------PYVER--------------"
     echo $MB_PYTHON_VERSION
+    python --version
     echo "---------------------------------"
 
-    rpm --import https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
+#     rpm --import https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
     
-    cat <<EOF > /etc/yum.repos.d/conda.repo
-[conda]
-name=Conda
-baseurl=https://repo.anaconda.com/pkgs/misc/rpmrepo/conda
-enabled=1
-gpgcheck=1
-gpgkey=https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
-EOF
+#     cat <<EOF > /etc/yum.repos.d/conda.repo
+# [conda]
+# name=Conda
+# baseurl=https://repo.anaconda.com/pkgs/misc/rpmrepo/conda
+# enabled=1
+# gpgcheck=1
+# gpgkey=https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
+# EOF
 
 
-    yum install conda
+#     yum install conda
 
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
     # build_swig
     
     # Prepare and install Anaconda
-    curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    chmod +x miniconda3.sh
-    sh miniconda3.sh -b -p /usr/local/miniconda3
-    export PATH=/usr/local/miniconda3/bin:$PATH
-    conda update --yes conda
-    conda create --yes -n test python=$MB_PYTHON_VERSION
-    source activate test
-    conda install --yes cmake
-    conda install --yes swig
-    cmake --version
-    cd hello_swig
-    mkdir build && cd build && cmake ..
-    make
-    cd ../..
+
+    # curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    # chmod +x miniconda3.sh
+    # sh miniconda3.sh -b -p /usr/local/miniconda3
+    # export PATH=/usr/local/miniconda3/bin:$PATH
+    # conda update --yes conda
+    # conda create --yes -n test python=$MB_PYTHON_VERSION
+    # source activate test
+    # conda install --yes cmake
+    # conda install --yes swig
+    # cmake --version
+    # cd hello_swig
+    # mkdir build && cd build && cmake ..
+    # make
+    # cd ../..
 
 
     # Install anaconda
-    # yum install curl -y
-    # yum install bzip2 -y
-    # yum install cmake -y
-    # yum install make -y
 
     # curl –O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     # sh Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
     # export PATH=" $HOME/miniconda3/bin:$PATH"
     # conda -V
 
+    yum install bzip2 -y
+    yum install cmake -y
+    yum install make -y
 
-    # yum install swig -y
-    # rm -rf build
-    # mkdir build
-    # cd build
-    # cmake ..
-    # make
-    # cd ..
+    yum install swig -y
+    rm -rf build
+    mkdir build
+    cd build
+    cmake ..
+    make
+    cd ..
 }
 
 function pip_opts {
