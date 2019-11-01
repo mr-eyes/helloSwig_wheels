@@ -16,8 +16,8 @@ function pre_build {
     # Prepare and install Anaconda
     curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     chmod +x miniconda3.sh
-    ./miniconda3.sh -b
-    export PATH=$HOME/miniconda3/bin:$PATH
+    sh miniconda3.sh -b -p /usr/local/miniconda3
+    export PATH=/usr/local/miniconda3/bin:$PATH
     conda update --yes conda
     conda create --yes -n test python=$MB_PYTHON_VERSION
     source activate test
