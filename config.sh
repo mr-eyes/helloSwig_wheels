@@ -6,6 +6,8 @@ function pre_build {
     # Runs in the root directory of this repository.
     build_swig
 
+    yum update -y
+
     # Dependencies
     yum install wget -y
 
