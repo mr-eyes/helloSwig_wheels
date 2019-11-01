@@ -6,6 +6,10 @@ function pre_build {
     # Runs in the root directory of this repository.
     build_swig
 
+    # Dependencies
+    yum -y install perl
+    yum -y install wget
+
     # Cmake Installation
     yum remove cmake -y
     wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
