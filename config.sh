@@ -6,14 +6,15 @@ function pre_build {
     # Runs in the root directory of this repository.
     build_swig
 
-    yum update -y
+    # Prepare and install Anaconda
+    
 
     # Dependencies
     yum install wget -y
 
     # Cmake Installation
 
-    wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+    curl -o cmake-3.6.2.tar.gz https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
     tar -zxvf cmake-3.6.2.tar.gz
     cd cmake-3.6.2
     ./bootstrap --prefix=/usr/local
