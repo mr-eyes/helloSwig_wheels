@@ -11,7 +11,7 @@ function pre_build {
 
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-    # build_swig
+    build_swig
 
     # Prepare and install Anaconda
     curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
