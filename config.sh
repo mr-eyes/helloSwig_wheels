@@ -64,7 +64,7 @@ function pre_build {
     cmake ..
     make
     cd ..
-    python setup.py bdist_wheel
+    # python setup.py bdist_wheel
     cd ..
 }
 
