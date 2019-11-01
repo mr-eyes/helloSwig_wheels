@@ -4,6 +4,9 @@
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
+    build_swig
+    yum install cmake -y
+    yum install make -y
     cd hello_swig
     mkdir build
     cd build
