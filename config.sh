@@ -54,7 +54,8 @@ function pre_build {
     yum install bzip2 -y
     yum install cmake -y
     yum install make -y
-    yum install swig -y
+    
+    build_swig
 
     cd hello_swig
     rm -rf build
