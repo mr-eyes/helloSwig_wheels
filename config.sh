@@ -68,6 +68,10 @@ function pre_build {
     cd ..
 }
 
+# function pip_opts {
+#     # Extra options for pip
+#     # echo "--only-binary matplotlib --find-links ${MANYLINUX_URL}"
+# }
 
 function run_tests {
     # echo "tests"
