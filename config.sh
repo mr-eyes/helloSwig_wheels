@@ -2,34 +2,41 @@
 # Test for OSX with [ -n "$IS_OSX" ]
 
 function pre_build {
+
+    echo "---------------------------------"
+    echo $MB_PYTHON_VERSION
+    echo "---------------------------------"
+
+
+
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-    build_swig
+    # build_swig
 
     # Prepare and install Anaconda
     
 
     # Dependencies
-    yum install wget -y
+    # yum install wget -y
 
     # Cmake Installation
 
-    curl -o cmake-3.6.2.tar.gz https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
-    tar -zxvf cmake-3.6.2.tar.gz
-    cd cmake-3.6.2
-    ./bootstrap --prefix=/usr/local
-    make
-    make install
-    cmake --version
+    # curl -o cmake-3.6.2.tar.gz https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+    # tar -zxvf cmake-3.6.2.tar.gz
+    # cd cmake-3.6.2
+    # ./bootstrap --prefix=/usr/local
+    # make
+    # make install
+    # cmake --version
 
     
-    cd hello_swig
-    mkdir build
-    cd build
-    cmake ..
-    make
-    cd ..
-    cd ..
+    # cd hello_swig
+    # mkdir build
+    # cd build
+    # cmake ..
+    # make
+    # cd ..
+    # cd ..
     
 
 
