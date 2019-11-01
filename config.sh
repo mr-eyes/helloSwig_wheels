@@ -14,30 +14,20 @@ function pre_build {
     # build_swig
 
     # Prepare and install Anaconda
-    
-
-    # Dependencies
-    # yum install wget -y
-
-    # Cmake Installation
-
-    # curl -o cmake-3.6.2.tar.gz https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
-    # tar -zxvf cmake-3.6.2.tar.gz
-    # cd cmake-3.6.2
-    # ./bootstrap --prefix=/usr/local
-    # make
-    # make install
-    # cmake --version
-
-    
-    # cd hello_swig
-    # mkdir build
-    # cd build
-    # cmake ..
-    # make
-    # cd ..
-    # cd ..
-    
+    curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    chmod +x miniconda3.sh
+    ./miniconda3.sh -b
+    export PATH=$HOME/miniconda3/bin:$PATH
+    conda update --yes conda
+    conda create --yes -n test python=$MB_PYTHON_VERSION
+    source activate test
+    conda install --yes cmake
+    conda install --yes swig
+    cmake --version
+    cd hello_swig
+    mkdir build && cd build && cmake ..
+    make
+    cd ../..
 
 
     # Install anaconda
