@@ -4,7 +4,7 @@ env:
         - REPO_DIR=hello_swig
         - TRAVIS_DEBUG_MODE=true
         # Commit from your-project that you want to build
-        # - BUILD_COMMIT=v0.3.0
+        - BUILD_COMMIT=master
         # pip dependencies to _build_ your project
         - BUILD_DEPENDS=""
         # pip dependencies to _test_ your project.  Include any dependencies
@@ -47,8 +47,9 @@ matrix:
             - g++-7
             - cmake
             - make
+            - automake
       env:
-        - MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_VERSION=3.6
     
     # - os:        linux
     #   sudo: required
@@ -120,7 +121,7 @@ install:
     - mkdir build && cd build && cmake ..
     - make
     - cd ${BACK}
-    - clean_code $REPO_DIR # $BUILD_COMMIT
+    - clean_code $REPO_DIR $BUILD_COMMIT
     - build_wheel $REPO_DIR $PLAT
 
 script:
