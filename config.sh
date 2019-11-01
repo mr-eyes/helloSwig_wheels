@@ -4,13 +4,10 @@
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-
-
     ls
-    ls build
+    install_swig
+    ls
     pwd
-    yum install tree -y
-    tree
 
 
     # Install anaconda
