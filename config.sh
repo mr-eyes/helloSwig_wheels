@@ -7,11 +7,10 @@ function pre_build {
     build_swig
 
     # Dependencies
-    yum -y install perl
-    yum -y install wget
+    yum install wget -y
 
     # Cmake Installation
-    yum remove cmake -y
+
     wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
     tar -zxvf cmake-3.6.2.tar.gz
     cd cmake-3.6.2
