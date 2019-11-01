@@ -7,7 +7,19 @@ function pre_build {
     echo $MB_PYTHON_VERSION
     echo "---------------------------------"
 
-    yum install gcc -y
+    rpm --import https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
+    
+    cat <<EOF > /etc/yum.repos.d/conda.repo
+[conda]
+name=Conda
+baseurl=https://repo.anaconda.com/pkgs/misc/rpmrepo/conda
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
+EOF
+
+
+    yum install conda
 
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
