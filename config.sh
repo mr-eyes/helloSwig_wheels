@@ -5,8 +5,18 @@ function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
     build_swig
-    yum install cmake -y
-    yum install make -y
+
+    # Cmake Installation
+    yum remove cmake -y
+    wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+    tar -zxvf cmake-3.6.2.tar.gz
+    cd cmake-3.6.2
+    ./bootstrap --prefix=/usr/local
+    make
+    make install
+    cmake --version
+
+    
     cd hello_swig
     mkdir build
     cd build
