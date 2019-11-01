@@ -7,12 +7,36 @@ function pre_build {
     echo $MB_PYTHON_VERSION
     echo "---------------------------------"
 
+    RETURN=$(pwd)
+
+
+    mkdir ~/glibc_install; cd ~/glibc_install 
+
+    curl -o glibc-2.14.tar.gz http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz
+
+    tar zxvf glibc-2.14.tar.gz
+
+    cd glibc-2.14
+
+    mkdir build
+
+    cd build
+
+    ../configure --prefix=/opt/glibc-2.14
+
+    make -j4
+
+    sudo make install
+
+    export LD_LIBRARY_PATH="/opt/glibc-2.14/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+    cd $RETURN
 
 
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
     # build_swig
-    yum install -y glibc
+    
     # Prepare and install Anaconda
     curl -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     chmod +x miniconda3.sh
