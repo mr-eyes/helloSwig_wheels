@@ -51,35 +51,35 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.6
     
-    - os:        linux
-      sudo: required
-      env:
-        - MB_PYTHON_VERSION=3.5
-        - PLAT=i686
+    # - os:        linux
+    #   sudo: required
+    #   env:
+    #     - MB_PYTHON_VERSION=3.5
+    #     - PLAT=i686
 
-    - os:        linux
-      sudo: required
-      env:
-        - MB_PYTHON_VERSION=3.6
+    # - os:        linux
+    #   sudo: required
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
     
-    - os:        linux
-      sudo: required
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
+    # - os:        linux
+    #   sudo: required
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    #     - PLAT=i686
     
-    - os:        linux
-      sudo: required
-      env:
-        - MB_PYTHON_VERSION=3.7
+    # - os:        linux
+    #   sudo: required
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
     
-    - os:        linux
-      sudo: required
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - PLAT=i686
+    # - os:        linux
+    #   sudo: required
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    #     - PLAT=i686
     
-    # OSX
+    # # OSX
     # - os:        osx
     #   sudo: required
     #   language:  generic
@@ -138,4 +138,6 @@ script:
 
 after_success:
     # Upload to bintray
-    - for WHEEL in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading ${WHEEL}";  curl -T $WHEEL -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/; done
+    - for f in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading $f"; curl -T $f -umr-eyes:$BINTRAY_API_KEY -H "X-Bintray-Package:helloSwig_wheels" -H "X-Bintray-Version:${BUILD_COMMIT}" -H "X-Bintray-Override:1" https://api.bintray.com/content/mr-eyes/generic/helloSwig_wheels/${BUILD_COMMIT}/; done
+     # Publish
+    - curl -X POST -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/generic/helloSwig_wheels/${BUILD_COMMIT}/publish
