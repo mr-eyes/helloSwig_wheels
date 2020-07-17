@@ -34,7 +34,7 @@ services:        docker
 matrix:
   include:
     # Linux
-    - os:        linux
+    - os: linux
       sudo: required
       compiler: 
         - gcc
@@ -137,6 +137,6 @@ script:
 
 after_success:
     # Upload to bintray
-    - for f in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading $f"; curl -T $f -umr-eyes:$BINTRAY_API_KEY -H "X-Bintray-Package:helloSwig_wheels" -H "X-Bintray-Version:${BUILD_COMMIT}" -H "X-Bintray-Override:1" https://api.bintray.com/content/mr-eyes/generic/helloSwig_wheels/${BUILD_COMMIT}/; done
+    - for f in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading $f"; curl -T $f -umr-eyes:$BINTRAY_API_KEY -H "X-Bintray-Package:helloSwig_wheels" -H "X-Bintray-Version:${BUILD_COMMIT}" -H "X-Bintray-Override:1" https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/; done
      # Publish
-    - curl -X POST -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/generic/helloSwig_wheels/${BUILD_COMMIT}/publish
+    - curl -X POST -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/publish
