@@ -136,7 +136,27 @@ script:
 
 
 after_success:
-    # Upload to bintray
-    - for f in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading $f"; curl -T $f -umr-eyes:$BINTRAY_API_KEY -H "X-Bintray-Package:helloSwig_wheels" -H "X-Bintray-Version:${BUILD_COMMIT}" -H "X-Bintray-Override:1" https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/; done
-     # Publish
-    - curl -X POST -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/publish
+  - echo "Sending wheels .."
+  - pwd
+  - ls
+
+deploy:
+  provider: bintray
+  file: "descriptor.json"
+  user: "mr-eyes"
+  key: "$BINTRAY_API_KEY"
+  skip_cleanup: true # to upload artifacts created during the build
+
+# after_success:
+#   - |
+#     if [[ $TRAVIS_TAG ]]; then
+#       python3 -m pip install twine
+#       python3 -m twine upload wheelhouse/*.whl
+#     fi
+
+
+# after_success:
+#     # Upload to bintray
+#     - for f in ${TRAVIS_BUILD_DIR}/wheelhouse/helloSwig*; do echo "Uploading $f"; curl -T $f -umr-eyes:$BINTRAY_API_KEY -H "X-Bintray-Package:helloSwig_wheels" -H "X-Bintray-Version:${BUILD_COMMIT}" -H "X-Bintray-Override:1" https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/; done
+#      # Publish
+#     - curl -X POST -umr-eyes:$BINTRAY_API_KEY https://api.bintray.com/content/mr-eyes/helloSwig_wheels/helloSwig/${BUILD_COMMIT}/publish
