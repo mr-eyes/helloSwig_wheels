@@ -1,0 +1,20 @@
+{
+    "package": {
+        "name": "helloSwig",
+        "repo": "helloSwig_wheels",
+        "subject": "helloSwig"
+    },
+    "version": {
+        "name": "0.2"
+    },
+    "files": [
+        {
+            "includePattern": "/io/wheelhouse/(.*\\.whl)",
+            "uploadPattern": "wheels/$1",
+            "matrixParams": {
+                "override": 1 
+            }
+        }
+    ],
+    "publish": true
+}
